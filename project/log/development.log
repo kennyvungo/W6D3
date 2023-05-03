@@ -352,3 +352,153 @@ Migrating to CreateUsers (20230503223503)
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(279088437195799245)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (2.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "kenny"], ["email", "kennyngogmailcom"], ["created_at", "2023-05-03 23:14:03.113989"], ["updated_at", "2023-05-03 23:14:03.113989"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "rocco"], ["email", "roccolattanziogmailcom"], ["created_at", "2023-05-03 23:14:06.426344"], ["updated_at", "2023-05-03 23:14:06.426344"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/users" for ::1 at 2023-05-03 16:15:54 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 365)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/users" for ::1 at 2023-05-03 16:17:43 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 4.3ms | Allocations: 6221)
+
+
+Started POST "/users?name=mike&email=evilmike@aa.com" for ::1 at 2023-05-03 16:20:43 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 769)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com" for ::1 at 2023-05-03 16:21:12 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 717)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?:name=mike&:email=evilmike@aa.com" for ::1 at 2023-05-03 16:22:12 -0700
+Processing by UsersController#create as */*
+  Parameters: {":name"=>"mike", ":email"=>"evilmike@aa.com"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 132)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com" for ::1 at 2023-05-03 16:23:05 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 716)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com" for ::1 at 2023-05-03 16:23:36 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 718)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:19:in `users_params'
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com&user=mikeuser" for ::1 at 2023-05-03 16:24:02 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com", "user"=>"mikeuser"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1543)
+
+
+  
+NoMethodError (undefined method `permit' for "mikeuser":String
+
+        params.require(:user).permit(:name, :email)
+                             ^^^^^^^):
+  
+app/controllers/users_controller.rb:19:in `users_params'
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com&id=3" for ::1 at 2023-05-03 16:24:19 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com", "id"=>"3"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 136)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:19:in `users_params'
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com&user=3" for ::1 at 2023-05-03 16:24:24 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com", "user"=>"3"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1473)
+
+
+  
+NoMethodError (undefined method `permit' for "3":String
+
+        params.require(:user).permit(:name, :email)
+                             ^^^^^^^):
+  
+app/controllers/users_controller.rb:19:in `users_params'
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users?name=mike&email=evilmike@aa.com&user=3" for ::1 at 2023-05-03 16:26:10 -0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mike", "email"=>"evilmike@aa.com", "user"=>"3"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2076)
+
+
+  
+NoMethodError (undefined method `permit' for "3":String
+
+        params.require(:user).permit(:name, :email)
+                             ^^^^^^^):
+  
+app/controllers/users_controller.rb:20:in `users_params'
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users" for ::1 at 2023-05-03 16:27:14 -0700
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"mike", "email"=>"evilmike@aa.com"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mike"], ["email", "evilmike@aa.com"], ["created_at", "2023-05-03 23:27:14.528931"], ["updated_at", "2023-05-03 23:27:14.528931"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 6.2ms | Allocations: 4414)
+
+
+Started POST "/users?user[name]=mike&user[email]=evilmike@aa.com" for ::1 at 2023-05-03 16:29:53 -0700
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"mike", "email"=>"evilmike@aa.com"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "mike"], ["email", "evilmike@aa.com"], ["created_at", "2023-05-03 23:29:53.016777"], ["updated_at", "2023-05-03 23:29:53.016777"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 1920)
+
+
