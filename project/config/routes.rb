@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, except: [:new, :edit]
   resources :artworks, except: [:new, :edit]
+  resources :artwork_shares, only: [:create, :destroy]
 
   # Defines the root path route ("/")
   # get '/users/:id', to: 'users#show', as: 'user'
@@ -14,4 +15,3 @@ Rails.application.routes.draw do
   # delete '/users/:id', to: 'users#destroy'
   # root "articles#index"
 end
-
