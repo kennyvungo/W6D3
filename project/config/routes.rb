@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, except: [:new, :edit] do
-    resources :artworks
+    resources :artworks, only: [:index]
+    resources :comments, only: [:index]
   end
-  resources :artworks, except: [:new, :edit] do
-    resources :comments, only: [:create, :destroy, :index] 
+  resources :artworks, except: [:new, :edit, :index] do
+    resources :comments, only: [:index]
   end
   resources :artwork_shares, only: [:create, :destroy]
 
+  resources :comments, only: [:create, :destroy]
 
-  
-  # resources :comments, only: [:create, :destroy, :index] 
-  
 
 
   # Defines the root path route ("/")

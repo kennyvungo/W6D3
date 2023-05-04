@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 
     def index
+        debugger
         if params[:user_id]
             @comments = Comment.where(author_id: params[:user_id])
         elsif params[:artwork_id]
-            @comments = Comment.where(artwork_id: params[:artist_id]) #???
+            @comments = Comment.where(artwork_id: params[:artwork_id])
         else
-            @comments = Comment.all
+            @comments = Comment.errors.full_messages
         end
         render json: @comments
     end
