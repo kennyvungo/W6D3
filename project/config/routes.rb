@@ -3,8 +3,16 @@ Rails.application.routes.draw do
   resources :users, except: [:new, :edit] do
     resources :artworks
   end
-  resources :artworks, except: [:new, :edit]
+  resources :artworks, except: [:new, :edit] do
+    resources :comments, only: [:create, :destroy, :index] 
+  end
   resources :artwork_shares, only: [:create, :destroy]
+
+
+  
+  # resources :comments, only: [:create, :destroy, :index] 
+  
+
 
   # Defines the root path route ("/")
   # get '/users/:id', to: 'users#show', as: 'user'

@@ -13,11 +13,19 @@ class User < ApplicationRecord
     has_many :artworks,
         foreign_key: :artist_id,
         class_name: :Artwork,
+        inverse_of: :artist,
         dependent: :destroy
 
     has_many :viewed_artwork,
         foreign_key: :viewer_id,
         class_name: :ArtworkShare,
+        inverse_of: :viewer,
+        dependent: :destroy
+
+    has_many :comments,
+        foreign_key: :author_id,
+        class_name: :Comment,
+        inverse_of: :author,
         dependent: :destroy
 
     has_many :shared_artworks,

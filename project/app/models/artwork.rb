@@ -21,7 +21,15 @@ class Artwork < ApplicationRecord
     has_many :shared_art_piece,
         foreign_key: :artwork_id,
         class_name: :ArtworkShare,
+        dependent: :destroy,
+        inverse_of: :art_piece
+
+    has_many :artwork_comments,
+        foreign_key: :artwork_id,
+        class_name: :Comment,
+        inverse_of: :parentart,
         dependent: :destroy
+
 
     has_many :shared_viewers,
         through: :shared_art_piece,
