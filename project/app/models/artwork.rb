@@ -30,7 +30,6 @@ class Artwork < ApplicationRecord
         inverse_of: :parentart,
         dependent: :destroy
 
-
     has_many :shared_viewers,
         through: :shared_art_piece,
         source: :viewer,
