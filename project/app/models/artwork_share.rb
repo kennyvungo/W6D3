@@ -14,13 +14,13 @@ class ArtworkShare < ApplicationRecord
 
     belongs_to :art_piece,
         foreign_key: :artwork_id,
-        class_name: :Artwork,
-        inverse_of: :shared_artworks
+        class_name: :Artwork
+        # inverse_of: :viewed_artwork
 
     belongs_to :viewer,
         foreign_key: :viewer_id,
-        class_name: :User,
-        inverse_of: :shared_viewers
+        class_name: :User
+        # inverse_of: :shared_art_piece
 
-       
+
 end

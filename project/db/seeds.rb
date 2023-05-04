@@ -40,5 +40,16 @@ share5 = ArtworkShare.create(artwork_id: 3, viewer_id: 1)
 share6 = ArtworkShare.create(artwork_id: 2, viewer_id: 1)
 share7 = ArtworkShare.create(artwork_id: 4, viewer_id: 2)
 
-puts "finished seeding"
 
+puts "Creating comments..."
+comment1 = Comment.create(body: 'KN is dope', author_id: 1, artwork_id: 1)
+comment2 = Comment.create(body: 'Rocstar need help', author_id: 2, artwork_id: 2)
+comment3 = Comment.create(body: 'Mike is so evil', author_id: 2, artwork_id: 3)
+comment4 = Comment.create(body: 'Paolo is so fancy', author_id: 3, artwork_id: 4)
+comment5 = Comment.create(body: 'mike is not that evil', author_id: 4, artwork_id: 5)
+comment6 = Comment.create(body: 'KN is awesome', author_id: 3, artwork_id: 1)
+comment7 = Comment.create(body: 'what is this CRUD', author_id: 4, artwork_id: 1)
+comment8 = Comment.create(body: 'error comment', author_id: 9, artwork_id: 23433)
+
+
+puts "finished seeding"
