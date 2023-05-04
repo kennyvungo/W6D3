@@ -42,8 +42,3 @@ share7 = ArtworkShare.create(artwork_id: 4, viewer_id: 2)
 
 puts "finished seeding"
 
-# users = User.create()
-
-# artworks = Artwork.create()
-
-# artwork_shares = ArtworkShare.create()
